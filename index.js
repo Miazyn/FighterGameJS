@@ -26,6 +26,7 @@ class Sprite {
         }
         this.color = color
         this.isAttacking
+        this.health = 100
     }
     draw() {
         ctx.fillStyle = this.color
@@ -157,7 +158,8 @@ function animate() {
         && player.isAttacking)
     {
         player.isAttacking = false
-        console.log('go')
+        enemy.health -= 20
+        document.querySelector('#enemyHealthbar').style.width = enemy.health + '%'
     }
 
 
@@ -167,7 +169,8 @@ function animate() {
     })
         && enemy.isAttacking) {
         enemy.isAttacking = false
-        console.log('enemy attack sucessfull')
+        player.health -= 20
+        document.querySelector('#playerHealthbar').style.width = player.health + '%'
     }
 }
 

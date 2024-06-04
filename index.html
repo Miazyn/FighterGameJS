@@ -1,11 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <canvas></canvas>
-  
+    <!--Red Container Div-->
+    <div id="RedContainer">
+        <!--Smaller Red Container Div-->
+        <div id="SmallerRedContainer">
+            <!--Player Health-->
+            <div class="playerHealthParent">
+                <div class="playerHealth"></div>
+                <div id="playerHealthbar"></div>
+            </div>
+
+            <!--Timer-->
+            <div id="Timer"></div>
+
+            <!--Enemy Health-->
+            <div class="healthParent">
+                <div class="enemyHealth"></div>
+                <div id="enemyHealthbar"></div>
+            </div>
+
+        </div>
+        <canvas></canvas>
+    </div>
   <script src="index.js"></script>
 </body>
 </html>

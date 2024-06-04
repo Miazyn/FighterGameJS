@@ -1,0 +1,69 @@
+*{
+    box-sizing: border-box;
+}
+
+/*Prevent Padding from messing up
+    sizes of your elements.
+*/
+
+#RedContainer{
+    position: relative;
+    display: inline-block;
+}
+
+#SmallerRedContainer {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+
+#Timer {
+    background-color: red;
+    height: 100px;
+    width: 100px;
+    flex-shrink: 0;
+}
+
+#playerHealthbar {
+    position: absolute;
+    background-color: blue;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+#enemyHealthbar {
+    position: absolute;
+    background-color: blue;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.enemyHealth {
+    background-color: forestgreen;
+    height: 30px;
+}
+
+.playerHealth {
+    background-color: forestgreen;
+    height: 30px;
+    width: 100%;
+}
+
+.healthParent {
+    position: relative;
+    height: 30px;
+}
+
+.playerHealthParent {
+    position: relative;
+    height: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
