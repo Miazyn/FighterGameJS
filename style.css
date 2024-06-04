@@ -45,12 +45,12 @@
 }
 
 .enemyHealth {
-    background-color: forestgreen;
+    background-color: yellow;
     height: 30px;
 }
 
 .playerHealth {
-    background-color: forestgreen;
+    background-color: yellow;
     height: 30px;
     width: 100%;
 }
@@ -58,6 +58,7 @@
 .healthParent {
     position: relative;
     height: 30px;
+    width: 100%;
 }
 
 .playerHealthParent {
