@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Assets",
+    "\\Assets\\samuraiMack",
+    "\\JS"
   ],
-  "SelectedNode": "\\index.js",
+  "SelectedNode": "\\Assets\\samuraiMack\\Idle.png",
   "PreviewInSolutionExplorer": false
 }
