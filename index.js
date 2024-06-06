@@ -28,7 +28,7 @@ const shop = new Sprite({
 
 const player = new Fighter({
     position: {
-    x: 0,
+    x: 200,
     y: 0
     },
     velocity: {
@@ -72,7 +72,7 @@ const player = new Fighter({
 
 const enemy = new Fighter({
     position: {
-        x: 400,
+        x: 700,
         y: 100
     },
     velocity: {
@@ -83,6 +83,35 @@ const enemy = new Fighter({
     offset: {
         x: -50,
         y: 0
+    },
+    imageSrc: './Assets/kenji/Idle.png',
+    framesMax: 4,
+    scale: 2.5,
+    offset: {
+        x: 215,
+        y: 170
+    },
+    sprites: {
+        idle: {
+            imageSrc: './Assets/kenji/Idle.png',
+            framesMax: 4
+        },
+        run: {
+            imageSrc: './Assets/kenji/Run.png',
+            framesMax: 8
+        },
+        jump: {
+            imageSrc: './Assets/kenji/Jump.png',
+            framesMax: 2
+        },
+        fall: {
+            imageSrc: './Assets/kenji/Fall.png',
+            framesMax: 2
+        },
+        attack1: {
+            imageSrc: './Assets/kenji/Attack1.png',
+            framesMax: 4
+        }
     }
 })
 
@@ -119,7 +148,7 @@ function animate() {
     shop.update()
 
     player.update()
-    //enemy.update()
+    enemy.update()
 
     player.velocity.x = 0
     enemy.velocity.x = 0
@@ -151,10 +180,28 @@ function animate() {
     }
 
     //Enemy Movement
-    if (keys.ArrowLeft.pressed && enemy.lastKey === 'ArrowLeft') {
+    if (keys.ArrowLeft.pressed && enemy.lastKey === 'ArrowLeft') 
+    {
         enemy.velocity.x = -5
-    } else if (keys.ArrowRight.pressed && enemy.lastKey === 'ArrowRight') {
+        enemy.switchSprite('run')
+    }
+    else if (keys.ArrowRight.pressed && enemy.lastKey === 'ArrowRight')
+    {
         enemy.velocity.x = 5
+        enemy.switchSprite('run')
+    }
+    else
+    {
+        enemy.switchSprite('idle')
+    }
+
+    if (enemy.velocity.y < 0)
+    {
+        enemy.switchSprite('jump')
+    }
+    else if (enemy.velocity.y > 0)
+    {
+        enemy.switchSprite('fall')
     }
 
     //Detect for Collisions
