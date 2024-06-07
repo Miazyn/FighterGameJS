@@ -66,6 +66,14 @@ const player = new Fighter({
         attack1: {
             imageSrc: './Assets/samuraiMack/Attack1.png',
             framesMax: 6
+        },
+        takeHit: {
+            imageSrc: './Assets/samuraiMack/Take hit - white silhouette.png',
+            framesMax: 4
+        },
+        death: {
+            imageSrc: './Assets/samuraiMack/Death.png',
+            framesMax: 6
         }
     },
     attackBox: {
@@ -119,6 +127,14 @@ const enemy = new Fighter({
         attack1: {
             imageSrc: './Assets/kenji/Attack1.png',
             framesMax: 4
+        },
+        takeHit: {
+            imageSrc: './Assets/kenji/Take hit.png',
+            framesMax: 3
+        },
+        death: {
+            imageSrc: './Assets/kenji/Death.png',
+            framesMax: 7
         }
     },
     attackBox: {
@@ -228,8 +244,9 @@ function animate() {
         player.isAttacking &&
         player.frameCurrent === 4)
     {
+        enemy.takeHit()
         player.isAttacking = false
-        enemy.health -= 20
+        
         document.querySelector('#enemyHealthbar').style.width = enemy.health + '%'
     }
 
@@ -245,8 +262,9 @@ function animate() {
         enemy.isAttacking &&
         enemy.frameCurrent === 2)
     {
+        player.takeHit()
+
         enemy.isAttacking = false
-        player.health -= 20
         document.querySelector('#playerHealthbar').style.width = player.health + '%'
     }
 
@@ -257,7 +275,7 @@ function animate() {
 
     //End game based on health
     if (enemy.health <= 0 || player.health <= 0) {
-        determineWinner({player, enemy, timerId})
+        determineWinner({ player, enemy, timerId })
     }
 }
 
