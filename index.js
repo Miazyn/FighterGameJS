@@ -179,6 +179,9 @@ function animate() {
     background.update()
     shop.update()
 
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.15)'
+    ctx.fillRect(0, 0, canvas.width, canvas.height)
+
     player.update()
     enemy.update()
 
@@ -247,7 +250,10 @@ function animate() {
         enemy.takeHit()
         player.isAttacking = false
         
-        document.querySelector('#enemyHealthbar').style.width = enemy.health + '%'
+        //document.querySelector('#enemyHealthbar').style.width = enemy.health + '%'
+        gsap.to('#enemyHealthbar', {
+            width: enemy.health + '%'
+        })
     }
 
     if (player.isAttacking && player.frameCurrent === 4)
@@ -265,7 +271,10 @@ function animate() {
         player.takeHit()
 
         enemy.isAttacking = false
-        document.querySelector('#playerHealthbar').style.width = player.health + '%'
+        //document.querySelector('#playerHealthbar').style.width = player.health + '%'
+        gsap.to('#playerHealthbar', {
+            width: player.health + '%'
+        })
     }
 
     if (enemy.isAttacking && enemy.frameCurrent === 2)
@@ -281,38 +290,51 @@ function animate() {
 
 animate()
 
-window.addEventListener('keydown', (event) => {
-    switch (event.key) {
-        case 'd':
-            keys.d.pressed = true
-            player.lastKey = 'd'
-            break
-        case 'a':
-            keys.a.pressed = true
-            player.lastKey = 'a'
-            break
-        case 'w':
-            player.velocity.y = -20
-            break
-        case ' ':
-            player.attack()
-            break
+window.addEventListener('keydown', (event) =>
+{
+    if (!player.dead)
+    {
+        switch (event.key)
+        {
+            case 'd':
+                keys.d.pressed = true
+                player.lastKey = 'd'
+                break
+            case 'a':
+                keys.a.pressed = true
+                player.lastKey = 'a'
+                break
+            case 'w':
+                player.velocity.y = -20
+                break
+            case ' ':
+                player.attack()
+                break
+            default:
+        }
+    }
 
-        case 'ArrowRight':
-            keys.ArrowRight.pressed = true
-            enemy.lastKey = 'ArrowRight'
-            break
-        case 'ArrowLeft':
-            keys.ArrowLeft.pressed = true
-            enemy.lastKey = 'ArrowLeft'
-            break
-        case 'ArrowUp':
-            enemy.velocity.y = -20
-            break
-        case 'ArrowDown':
-            enemy.attack() 
-            break
-        default:
+
+    if (!enemy.dead)
+    {
+        switch (event.key)
+        {
+            case 'ArrowRight':
+                keys.ArrowRight.pressed = true
+                enemy.lastKey = 'ArrowRight'
+                break
+            case 'ArrowLeft':
+                keys.ArrowLeft.pressed = true
+                enemy.lastKey = 'ArrowLeft'
+                break
+            case 'ArrowUp':
+                enemy.velocity.y = -20
+                break
+            case 'ArrowDown':
+                enemy.attack()
+                break
+            default:
+        }
     }
 })
 
