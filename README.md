@@ -11,10 +11,10 @@ Play it [here](https://miazyn-fightergame-javascript.netlify.app/).
 ![FightGameScreenshot1](https://github.com/Miazyn/FighterGameJS/assets/94353989/761aeb62-9280-437f-b198-85b9aca6dada)
 
 ### Controls
-Player 1
-WASD - To move and jump up ('W' to jump)
-Spacebar - To attack
-
-Player 2
-Arrowkeys - To move and jump up
+Player 1 <br>
+WASD - To move and jump up ('W' to jump) <br>
+Spacebar - To attack <br>
+<br>
+Player 2 <br>
+Arrowkeys - To move and jump up <br>
 Arrow Down - To Attack
